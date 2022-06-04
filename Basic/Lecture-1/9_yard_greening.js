@@ -4,7 +4,7 @@ function yard_greening(input){
     let discount = sum_1 * 0.18
     let final = sum_1 - discount
     console.log(`The final price is: ${final} lv.`)
-    console.log(`The discont is: ${discount} lv.`)
+    console.log(`The discount is: ${discount} lv.`)
 }
 
 
