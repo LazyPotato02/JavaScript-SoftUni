@@ -1,7 +1,7 @@
 function age(age){
     age = Number(age)
 
-    if (age <= 2 && age > 0){
+    if (age <= 2 && age >= 0){
         console.log('baby');
     }else if (age >= 3 && age <= 13){
         console.log('child');
@@ -16,4 +16,4 @@ function age(age){
     }
 }
 
-age(-1)
+age(0)
