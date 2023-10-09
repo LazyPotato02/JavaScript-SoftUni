@@ -16,13 +16,13 @@ function addSubstract(numbers) {
     sum = sumNumbersList(ll)
     console.log(sum)
 
-
+    function sumNumbersList(nums) {
+        const sum = nums.reduce((accumulator, value) => {
+            return accumulator + value;
+        }, 0);
+        return sum
+    }
 }
 
-function sumNumbersList(nums) {
-    const sum = nums.reduce((accumulator, value) => {
-        return accumulator + value;
-    }, 0);
-    return sum
-}
+
 addSubstract([-5, 11, 3, 0, 2])

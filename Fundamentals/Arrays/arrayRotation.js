@@ -3,7 +3,8 @@ function arrayRotation(array, rotations){
         nToRotate = array.shift()
         array.push(nToRotate)
     }
-    console.log(array)
+    console.log(...array);
+
 
 }
 arrayRotation([2, 4, 15, 31], 5)

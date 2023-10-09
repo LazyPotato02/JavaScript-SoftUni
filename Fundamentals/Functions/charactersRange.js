@@ -1,4 +1,6 @@
-function charactersRange(chars){
+function charactersRange(char1,char2){
+
+    let chars = [char1,char2]
     let firstChar = chars[0].charCodeAt(0)
     let secondChar = chars[1].charCodeAt(0)
     let charsFinal = []
@@ -12,8 +14,8 @@ function charactersRange(chars){
             charsFinal.push(char)
         }
     }
-    console.log(charsFinal)
+    console.log(...charsFinal)
 
 }
-charactersRange(['C',
-'#'])
+charactersRange('C',
+'#')

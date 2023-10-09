@@ -1,13 +1,8 @@
-function smallestNumbers(nums){
-    let minNumber = 9999999
-    for (el of nums){
-        if (el < minNumber){
-            minNumber = el
-        }
-    }
-    console.log(minNumber)
+function smallestNumbers(num1,num2,num3) {
+    let nums = [Number(num1),Number(num2),Number(num3)]
+    const min = Math.min(...nums)
+    console.log(min)
 }
-
-smallestNumbers([25,
-    21,
-    4])
+smallestNumbers(2,
+    5,
+    3)
