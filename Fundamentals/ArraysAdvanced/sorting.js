@@ -1,13 +1,11 @@
-function Sorting(array){
-    array = array.sort(function(a, b){return a-b})
-    let sortedNumbers = []
-    while (array.length > 0){
-        a = array.pop()
-        b = array.shift()
-        sortedNumbers.push(a)
-        sortedNumbers.push(b)
+function solve(input) {
+    let result = [];
+    array = input.sort((a, b) => a - b);
+
+    while (array.length !== 0) {
+        result.push(array[array.length - 1]) && array.pop();
+        result.push(array[0]) && array.shift();
     }
-    console.log(sortedNumbers)
-    
+    console.log(result.join(' '));
 }
-Sorting([1, 21, 3, 52, 69, 63, 31, 2, 18, 94])
+solve([1, 21, 3, 52, 69, 63, 31, 2, 18, 94])

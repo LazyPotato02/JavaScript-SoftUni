@@ -1,5 +1,7 @@
 function distinctArray(arr){
-    console.log(arr.filter((item,
+    let val = (arr.filter((item,
         index) => arr.indexOf(item) === index));
+
+    console.log(...val)
 }
 distinctArray([1, 2, 3, 4])

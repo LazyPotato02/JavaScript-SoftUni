@@ -1,28 +1,17 @@
-function searchNumber(array,limiters){
-    let arr = array
-    let takeFromArr = limiters[0]
-    let removeElements = limiters[1]
-    let searchedNum = limiters[2]
-    let workArray = []
 
-    for (let i = 0; i < takeFromArr; i++){
-        workArray.push(arr[i])
+
+function solve(nums,criteria){
+    let count = 0;
+    let el = criteria[2];
+    let arr = nums.slice(0,criteria[0]);
+    arr.splice(0,criteria[1]);
+    for(let i = 0;i<arr.length;i++){
+  
+        if(arr[i] === (el)){
+            count++;
+         }
     }
-
-    for (let i = 0; i < removeElements;i++){
-        workArray.shift()
-    }
-
-    let counter = 0;
-    for (el of arr) {
-        if (el == searchedNum) {
-            counter++;
-        }
-    };
-    console.log(`Number ${searchedNum} occurs ${counter} times.`)
-
-
+console.log(`Number ${el} occurs ${count} times.`)
 }
-
-searchNumber([7, 1, 5, 8, 2, 7],
+solve([7, 1, 5, 8, 2, 7],
     [3, 1, 5])

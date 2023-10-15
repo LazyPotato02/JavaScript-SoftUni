@@ -1,11 +1,13 @@
-function sortArraybyCriteria(array) {
-    let sortedArray = array.sort(function (a, b) {
-        // ASC  -> a.length - b.length
-        // DESC -> b.length - a.length
-        return a.length - b.length;
-    },function (a, b) {return a - b})
-
-    console.log(sortedArray)
+function sortArray(input) {
+    input.sort(twoCriteriaSort);
+    input.forEach(el => console.log(el));
+  
+    function twoCriteriaSort(cur, next) {
+      if (cur.length === next.length) {
+        return cur.localeCompare(next);
+      }
+      return cur.length - next.length;
+    }
 }
 
-sortArraybyCriteria(['alpha', 'beta', 'gamma'])
+sortArray(['test', 'Deny', 'omen', 'Default'])
