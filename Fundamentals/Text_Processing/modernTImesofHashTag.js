@@ -1,12 +1,21 @@
 function modernTimes(sentence){
     let sent = sentence.split(' ')
-    for (v of sent){
-        if (v.includes('#')&& v.length > 1){
-            let temp = v.split('')
-            let result = temp.splice(1,temp.length-1)
-            console.log(result.join(''))
-
+    for (let word of sent){
+        if (word.startsWith('#') && word.length > 1){
+            word = word.slice(1)
+            let onlyChars = true
+            for (let i = 0; i < word.length; i++) {
+                let word1 = word.toUpperCase()
+                if (word1[i].charCodeAt(0) < 65 || word1[i].charCodeAt(0) > 90){
+                    onlyChars = false
+                    break
+                }
+            }
+            if (!(onlyChars === false)){
+                console.log(word)
+            }
         }
     }
 }
-modernTimes('The symbol # is known #variously in English-speaking #regions as the #number sign')
+// modernTimes('Nowadays everyone uses # to tag a #special word in #socialMedia')
+modernTimes('The symbol # is known #variou2sly in English-speaking #regions as the #number sign')

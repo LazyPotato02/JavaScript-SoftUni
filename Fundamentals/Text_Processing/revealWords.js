@@ -1,16 +1,13 @@
-function revealWords(wordtoReplace,sentence){
-    let sent = sentence.split(' ')
-    let words = wordtoReplace.split(', ')
-    for (v of sent){
-        if (v.includes('*')){
-            let idx = sent.indexOf(v)
-            let word = words.shift()
-            sent[idx] = word
-        }
+function revealWords(wordToReplace, text) {
+    let words = wordToReplace.split(', ')
+    let symbol = '*'
+    for (let word of words) {
+        let symb = symbol.repeat(Number(word.length))
+        text = text.replace(symb, word)
     }
-    console.log(sent.join(' '))
+    console.log(text)
 }
 
-revealWords('great, learning',
-'softuni is ***** place for ******** new programming languages'
+revealWords('learning, great',
+    'softuni is ***** place for ******** new programming languages'
 )
