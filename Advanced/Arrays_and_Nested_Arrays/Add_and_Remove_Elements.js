@@ -5,11 +5,9 @@ function Add_and_Remove_Elements(commands) {
         if (command === 'add'){
             initialNumber.push(Number(counter))
             counter++
-
         }else if (command === 'remove'){
             initialNumber.pop()
             counter++
-
         }
 
     }
