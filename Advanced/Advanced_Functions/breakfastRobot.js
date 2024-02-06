@@ -1,54 +1,77 @@
-function breakfastRobot() {
-    let protein = 0
-    let carbohydrate = 0
-    let fat = 0
-    let flavours = 0
-    let menu = {
-        'apple': {
-            'carbohydrate': 1,
-            'flavour': 2
+function solution() {
+    let recipes = {
+        "apple":  new Map(),
+        "lemonade": new Map(),
+        "burger": new Map(),
+        "eggs": new Map(),
+        "turkey": new Map()
+    };
+    recipes.apple.set("carbohydrate", 1);
+    recipes.apple.set("flavour", 2);
+    recipes.lemonade.set("carbohydrate", 10);
+    recipes.lemonade.set("flavour", 20);
+    recipes.burger.set("carbohydrate", 5);
+    recipes.burger.set("fat", 7);
+    recipes.burger.set("flavour", 3);
+    recipes.eggs.set("protein", 5);
+    recipes.eggs.set("fat", 1);
+    recipes.eggs.set("flavour", 1);
+    recipes.turkey.set("protein", 10);
+    recipes.turkey.set("carbohydrate", 10);
+    recipes.turkey.set("fat", 10);
+    recipes.turkey.set("flavour", 10);
+
+    const atStock = {
+        "protein": 0,
+        "carbohydrate": 0,
+        "fat": 0,
+        "flavour": 0,
+    };
+
+    const cook = {
+        "restock": (...args) => {
+            let microElement = args.shift();
+            let quantity = args.shift();
+            atStock[microElement] += quantity;
+            // console.log("Success");
+            return "Success";
         },
-        'lemonade': {
-            'carbohydrate': 10,
-            'flavour': 20
+        "prepare": (...args) => {
+            let recipe = args.shift();
+            recipe = recipes[recipe];
+            let quantity = args.shift();
+            for (let [key, value] of recipe) {
+                if (atStock[key] < value * quantity) {
+
+                    return `Error: not enough ${key} in stock`;
+                }
+            }
+            for (let [key, value] of recipe) {
+                atStock[key] -= value * quantity;
+            }
+            // console.log("Success");
+            return "Success";
         },
-        'burger': {
-            'carbohydrate': 5,
-            'fat': 7,
-            '3': 'flavour'
-        },
-        'eggs': {
-            'protein': 5,
-            'fat': 1,
-            'flavour': 1
-        },
-        'turkey': {
-            'protein': 10,
-            'carbohydrate': 10,
-            'fat': 10,
-            'flavour': 10
+        "report": () => {
+            let output = [];
+            Object.entries(atStock).forEach( (el) => {
+                output.push(`${el[0]}=${el[1]}`);
+            });
+            // console.log(output);
+            return output.join(" ");
         }
+    };
 
+    function processor(args) {
+        let com = args.split(" ");
+        return eval(`cook.${com.shift()}("${com[0]}", ${com[1]})`);
     }
-
-    function manager(val) {
-
-        let value = val.split(' ')
-        let command = value.shift()
-
-        // Use for the prepare command
-        // let ingredient = value.shift()
-        // let ingredientQuantity = Number(value.shift())
-        // for (const ingredientKey in menu[ingredient]) {
-        //     let neededIngredient = menu[ingredient][ingredientKey]
-        // }
-    }
-
-    return manager
-
-
+    return processor;
 }
 
-let manager = breakfastRobot();
+let manager = solution();
 console.log(manager("restock flavour 50"))// Success
+console.log(manager("report"))// Success
 console.log(manager("prepare lemonade 4"))// Error: not enough carbohydrate in stock
+
+
