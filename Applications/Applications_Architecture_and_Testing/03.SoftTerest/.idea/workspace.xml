@@ -10,9 +10,9 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../../.." />
   </component>
-  <component name="ProjectColorInfo"><![CDATA[{
-  "associatedIndex": 7
-}]]></component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 7
+}</component>
   <component name="ProjectId" id="2dlqU3fT5zOaYIzBayy5xIiJvT6" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
@@ -23,7 +23,7 @@
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "git-widget-placeholder": "main",
-    "last_opened_file_path": "D:/Projects/JavaScript-SoftUni/Applications/Applications_Architecture_and_Testing/03.SoftTerest",
+    "last_opened_file_path": "//wsl.localhost/Ubuntu/home/lazy/subtitle-site/front_end",
     "nodejs_package_manager_path": "npm",
     "vue.rearranger.settings.migration": "true"
   }
@@ -37,6 +37,7 @@
       <option name="presentableId" value="Default" />
       <updated>1710593024196</updated>
       <workItem from="1710593025283" duration="45000" />
+      <workItem from="1710631136830" duration="25000" />
     </task>
     <servers />
   </component>

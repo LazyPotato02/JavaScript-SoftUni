@@ -1,0 +1,27 @@
+import {api} from "../requester.js"
+
+const BASE_URL = "http://localhost:3030/"
+const endpoint = {
+    login: "users/login",
+    register: "users/register",
+    logout: "users/logout"
+}
+
+async function login(data) {
+    return await api.post(BASE_URL + endpoint.login, data)
+}
+
+async function register(data) {
+    return await api.post(BASE_URL + endpoint.register, data)
+}
+
+async function logout() {
+    return await api.get(BASE_URL + endpoint.logout)
+}
+
+
+export const userService = {
+    login,
+    register,
+    logout,
+}
