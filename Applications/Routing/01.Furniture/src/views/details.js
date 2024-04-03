@@ -42,3 +42,10 @@ export async function showDetails(ctx){
     const isOwner = userDataHelper.hasOwner(item._ownerId)
     ctx.render(detailsTemplate(item,isOwner))
 }
+
+
+
+
+
+
+
