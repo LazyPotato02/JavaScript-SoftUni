@@ -32,7 +32,7 @@ const stonesSchema = new Schema({
         type: String,
         required: true,
     },
-    likedList: {
+    likes: {
         type: [Types.ObjectId],
         required: true,
         default: []

@@ -1,8 +1,6 @@
 const mongoose = require('mongoose')
 
 
-// TODO Import real data model
-
 require('../models/User')
 require('../models/Stone')
 

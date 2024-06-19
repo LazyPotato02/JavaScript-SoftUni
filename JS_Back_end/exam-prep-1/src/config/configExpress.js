@@ -8,7 +8,6 @@ const secret = 'cookie secr3t'
 function configExpress(app) {
 
     app.use(cookieParser(secret))
-    // TODO Add session middleware
     app.use(session())
 
     app.use('/static', express.static('static'));

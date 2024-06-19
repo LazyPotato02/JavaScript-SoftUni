@@ -7,7 +7,7 @@ async function getAll() {
     return Stone.find().lean();
 }
 
-async function getRecent(){
+async function getRecent() {
     return Stone.find().sort({$natural: -1}).limit(3).lean()
 }
 
@@ -24,7 +24,7 @@ async function create(data, authorId) {
         location: data.location,
         formula: data.formula,
         description: data.description,
-        author:authorId
+        author: authorId
     })
 
     await record.save()
@@ -36,10 +36,10 @@ async function create(data, authorId) {
 async function update(id, data, userId) {
     const record = await Stone.findById(id)
 
-    if (!record){
+    if (!record) {
         throw new ReferenceError('Record not found ' + id)
     }
-    if (record.author.toString() !== userId){
+    if (record.author.toString() !== userId) {
         throw new Error('Access denied')
     }
     record.name = data.name
@@ -55,24 +55,47 @@ async function update(id, data, userId) {
     return record
 }
 
-async function deleteById(id,userId){
+async function likeStone(stoneId, userId) {
+    const record = await Stone.findById(stoneId)
+
+    if (!record) {
+        throw new ReferenceError('Record not found ' + stoneId)
+    }
+    if (record.author.toString() !== userId) {
+        throw new Error('Access denied')
+    }
+    if (record.likes.find(l => l.toString() === userId)) {
+        return
+    }
+
+    record.likes.push(userId)
+
+    await record.save()
+
+    return record
+}
+
+
+async function deleteById(id, userId) {
     const record = await Stone.findById(id)
 
-    if (!record){
+    if (!record) {
         throw new ReferenceError('Record not found ' + id)
     }
-    if (record.author.toString() !== userId){
+    if (record.author.toString() !== userId) {
         throw new Error('Access denied')
     }
 
     await Stone.findByIdAndDelete(id)
 
 }
+
 module.exports = {
     getAll,
     getRecent,
     getById,
     create,
     update,
-    deleteById
+    deleteById,
+    likeStone
 }
