@@ -1,14 +1,20 @@
 const {Router} = require('express')
+const {getRecent, getAll} = require("../services/stones");
 
 const homeRouter = Router()
 
 homeRouter.get('/', async (req, res) => {
-    const minerals = []
+    const stones = await getRecent()
 
 
-    res.render('home', {minerals})
+    res.render('home', {stones})
 })
+homeRouter.get('/catalog', async (req, res) => {
+    const stones = await getAll()
 
+
+    res.render('catalog', {stones})
+})
 module.exports = {
     homeRouter,
 }

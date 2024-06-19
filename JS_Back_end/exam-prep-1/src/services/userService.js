@@ -31,6 +31,7 @@ async function login(identity, password) {
         throw new Error(`Incorrect username or password`);
     }
 
+    return user
 
 }
 

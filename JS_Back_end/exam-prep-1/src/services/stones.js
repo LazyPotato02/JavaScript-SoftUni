@@ -1,4 +1,5 @@
 const {Stone} = require('../models/Stone')
+const {Types} = require("mongoose");
 
 // TODO replace with real data service according to exam description
 
@@ -15,10 +16,15 @@ async function getById(id) {
 }
 
 async function create(data, authorId) {
-    // TODO extract properties from view model
     const record = new Stone({
-        prop: data.prop,
-        author: authorId
+        name: data.name,
+        category: data.category,
+        color: data.color,
+        image: data.image,
+        location: data.location,
+        formula: data.formula,
+        description: data.description,
+        author:authorId
     })
 
     await record.save()
@@ -36,10 +42,14 @@ async function update(id, data, userId) {
     if (record.author.toString() !== userId){
         throw new Error('Access denied')
     }
+    record.name = data.name
+    record.category = data.category
+    record.color = data.color
+    record.image = data.image
+    record.location = data.location
+    record.formula = data.formula
+    record.description = data.description
 
-    //    TODO replace with real props
-
-    record.prop = data.prop
     await record.save()
 
     return record

@@ -6,7 +6,7 @@ const secret = 'secretKey'
 function createToken(userData) {
     const payload = {
         email: userData.email,
-        id: userData._id
+        _id: userData._id
     };
 
     const token = jwt.sign(payload, secret, {
