@@ -1,18 +1,22 @@
-const {Data: Stones} = require('../models/Stones')
+const {Stone} = require('../models/Stone')
 
 // TODO replace with real data service according to exam description
 
 async function getAll() {
-    return Stones.find().lean();
+    return Stone.find().lean();
+}
+
+async function getRecent(){
+    return Stone.find().sort({$natural: -1}).limit(3).lean()
 }
 
 async function getById(id) {
-    return Stones.findById(id).lean()
+    return Stone.findById(id).lean()
 }
 
 async function create(data, authorId) {
     // TODO extract properties from view model
-    const record = new Stones({
+    const record = new Stone({
         prop: data.prop,
         author: authorId
     })
@@ -24,7 +28,7 @@ async function create(data, authorId) {
 
 
 async function update(id, data, userId) {
-    const record = await Stones.findById(id)
+    const record = await Stone.findById(id)
 
     if (!record){
         throw new ReferenceError('Record not found ' + id)
@@ -42,7 +46,7 @@ async function update(id, data, userId) {
 }
 
 async function deleteById(id,userId){
-    const record = await Stones.findById(id)
+    const record = await Stone.findById(id)
 
     if (!record){
         throw new ReferenceError('Record not found ' + id)
@@ -51,11 +55,12 @@ async function deleteById(id,userId){
         throw new Error('Access denied')
     }
 
-    await Stones.findByIdAndDelete(id)
+    await Stone.findByIdAndDelete(id)
 
 }
 module.exports = {
     getAll,
+    getRecent,
     getById,
     create,
     update,

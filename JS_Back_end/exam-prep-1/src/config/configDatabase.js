@@ -4,7 +4,7 @@ const mongoose = require('mongoose')
 // TODO Import real data model
 
 require('../models/User')
-require('../models/Stones')
+require('../models/Stone')
 
 
 async function configDatabase() {

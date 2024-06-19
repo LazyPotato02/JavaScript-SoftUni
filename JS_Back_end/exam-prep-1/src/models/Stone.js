@@ -43,6 +43,6 @@ const stonesSchema = new Schema({
     }
 });
 
-const Stones = model('Stones', stonesSchema);
+const Stone = model('Stone', stonesSchema);
 
-module.exports = {Stones};
+module.exports = {Stone};
