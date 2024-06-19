@@ -1,18 +1,18 @@
-const {Data} = require('../models/Data')
+const {Data: Stones} = require('../models/Stones')
 
 // TODO replace with real data service according to exam description
 
 async function getAll() {
-    return Data.find().lean();
+    return Stones.find().lean();
 }
 
 async function getById(id) {
-    return Data.findById(id).lean()
+    return Stones.findById(id).lean()
 }
 
 async function create(data, authorId) {
     // TODO extract properties from view model
-    const record = new Data({
+    const record = new Stones({
         prop: data.prop,
         author: authorId
     })
@@ -24,7 +24,7 @@ async function create(data, authorId) {
 
 
 async function update(id, data, userId) {
-    const record = await Data.findById(id)
+    const record = await Stones.findById(id)
 
     if (!record){
         throw new ReferenceError('Record not found ' + id)
@@ -42,7 +42,7 @@ async function update(id, data, userId) {
 }
 
 async function deleteById(id,userId){
-    const record = await Data.findById(id)
+    const record = await Stones.findById(id)
 
     if (!record){
         throw new ReferenceError('Record not found ' + id)
@@ -51,7 +51,7 @@ async function deleteById(id,userId){
         throw new Error('Access denied')
     }
 
-    await Data.findByIdAndDelete(id)
+    await Stones.findByIdAndDelete(id)
 
 }
 module.exports = {

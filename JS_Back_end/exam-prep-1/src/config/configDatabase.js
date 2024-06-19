@@ -4,11 +4,11 @@ const mongoose = require('mongoose')
 // TODO Import real data model
 
 require('../models/User')
-require('../models/Data')
+require('../models/Stones')
 
 
 async function configDatabase() {
-    const connectionString = 'mongodb://10.70.71.110:27017/exam-db';
+    const connectionString = 'mongodb://10.70.71.110:27017/earth-treasure';
 
     await mongoose.connect(connectionString);
 
