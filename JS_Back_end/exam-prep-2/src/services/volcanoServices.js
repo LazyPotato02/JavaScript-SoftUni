@@ -8,9 +8,25 @@ async function getAll() {
 async function getById(id) {
     return Volcano.findById(id).lean()
 }
+
 // TODO add search
+
+async function searchVolcanoes(name, typeVolcano) {
+    const query = {}
+
+    if (name) {
+        query.name = new RegExp(name, 'i');
+    }
+
+    if (typeVolcano && typeVolcano !== '---') {
+        query.typeVolcano = typeVolcano
+    }
+
+    return Volcano.find(query).lean()
+}
+
+
 async function create(data, authorId) {
-    console.log(authorId)
     const record = new Volcano({
         name: data.name,
         location: data.location,
@@ -55,10 +71,10 @@ async function addVote(volcanoId, userId) {
     if (!record) {
         throw new ReferenceError('Record not found ' + id)
     }
-    if (record.author.toString() !== userId) {
+    if (record.author.toString() === userId) {
         throw new Error('Cannot vote for your own publication')
     }
-    if (record.voteList.find(v => v.toString() === userId)){
+    if (record.voteList.find(v => v.toString() === userId)) {
         throw new Error('Cannot vote more than once')
 
     }
@@ -88,5 +104,7 @@ module.exports = {
     getById,
     create,
     update,
-    deleteById
+    deleteById,
+    addVote,
+    searchVolcanoes
 }
