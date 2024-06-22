@@ -1,6 +1,5 @@
 const {Schema, model, Types} = require('mongoose');
 
-// TODO replace with data model from exam description
 
 const volcanoSchema = new Schema({
     name: {
@@ -37,7 +36,7 @@ const volcanoSchema = new Schema({
         required: true,
         default: [],
     },
-    owner: {
+    author: {
         type: Types.ObjectId,
         ref: 'User',
     }

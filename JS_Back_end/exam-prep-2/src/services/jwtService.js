@@ -7,9 +7,8 @@ function createToken(userData) {
     const payload = {
         email: userData.email,
         username: userData.username,
-        id: userData._id
+        _id: userData._id
     };
-
     const token = jwt.sign(payload, secret, {
         expiresIn: '1d'
     })
@@ -19,7 +18,6 @@ function createToken(userData) {
 
 function verifyToken(token) {
     const data = jwt.verify(token, secret)
-
 
     return data
 }

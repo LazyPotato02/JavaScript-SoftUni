@@ -10,6 +10,7 @@ async function getById(id) {
 }
 // TODO add search
 async function create(data, authorId) {
+    console.log(authorId)
     const record = new Volcano({
         name: data.name,
         location: data.location,
@@ -18,7 +19,7 @@ async function create(data, authorId) {
         image: data.image,
         typeVolcano: data.typeVolcano,
         description: data.description,
-        owner: authorId
+        author: authorId
     })
 
     await record.save()

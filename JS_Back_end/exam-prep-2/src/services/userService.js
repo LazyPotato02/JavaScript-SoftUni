@@ -30,7 +30,6 @@ async function register(identity,username, password) {
 
 async function login(identity, password) {
     const user = await User.findOne({[identityName]: identity})
-
     if (!user) {
         throw new Error(`Incorrect username or password`);
     }
@@ -40,7 +39,7 @@ async function login(identity, password) {
     if (!match){
         throw new Error(`Incorrect username or password`);
     }
-
+    return user
 
 }
 
