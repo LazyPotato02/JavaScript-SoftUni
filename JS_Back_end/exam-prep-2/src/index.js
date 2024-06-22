@@ -6,7 +6,8 @@ const {configRoutes} = require("./config/configRoutes");
 
 
 start()
-async function start(){
+
+async function start() {
     const app = express();
 
     await configDatabase()

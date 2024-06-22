@@ -35,7 +35,7 @@ const volcanoSchema = new Schema({
     voteList: {
         type: [Types.ObjectId],
         required: true,
-        default:[],
+        default: [],
     },
     owner: {
         type: Types.ObjectId,
