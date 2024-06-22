@@ -1,18 +1,16 @@
-const {Data} = require('../models/Data')
-
-// TODO replace with real data service according to exam description
+const {Volcano} = require('../models/Volcano')
 
 async function getAll() {
-    return Data.find().lean();
+    return Volcano.find().lean();
 }
 
 async function getById(id) {
-    return Data.findById(id).lean()
+    return Volcano.findById(id).lean()
 }
 
 async function create(data, authorId) {
     // TODO extract properties from view model
-    const record = new Data({
+    const record = new Volcano({
         prop: data.prop,
         author: authorId
     })
@@ -24,7 +22,7 @@ async function create(data, authorId) {
 
 
 async function update(id, data, userId) {
-    const record = await Data.findById(id)
+    const record = await Volcano.findById(id)
 
     if (!record){
         throw new ReferenceError('Record not found ' + id)
@@ -42,7 +40,7 @@ async function update(id, data, userId) {
 }
 
 async function deleteById(id,userId){
-    const record = await Data.findById(id)
+    const record = await Volcano.findById(id)
 
     if (!record){
         throw new ReferenceError('Record not found ' + id)
@@ -51,7 +49,7 @@ async function deleteById(id,userId){
         throw new Error('Access denied')
     }
 
-    await Data.findByIdAndDelete(id)
+    await Volcano.findByIdAndDelete(id)
 
 }
 module.exports = {

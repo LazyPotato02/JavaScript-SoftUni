@@ -5,7 +5,7 @@ const constants = require("constants");
 // TODO set identity prop name based on exam description
 const identityName = 'email';
 
-async function register(identity, password) {
+async function register(identity,username, password) {
     const existing = await User.findOne({[identityName]: identity});
 
     if (existing) {
@@ -13,9 +13,18 @@ async function register(identity, password) {
     }
     const user = new User({
         [identityName]: identity,
+        username,
         password: await bcrypt.hash(password, 10)
     });
-    await user.save()
+    try{
+        await user.save()
+    }catch (e) {
+        if (e.code === 11000){
+            throw new Error('This username is already in use!')
+        }
+    }
+
+
     return user
 }
 

@@ -6,6 +6,7 @@ const secret = 'secretKey'
 function createToken(userData) {
     const payload = {
         email: userData.email,
+        username: userData.username,
         id: userData._id
     };
 
